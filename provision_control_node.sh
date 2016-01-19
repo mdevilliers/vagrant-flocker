@@ -1,10 +1,14 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive 
 
+# add clusterhq deb details
 add-apt-repository -y "deb https://clusterhq-archive.s3.amazonaws.com/ubuntu/$(lsb_release --release --short)/\$(ARCH) /"
+
+# install dependancies
 apt-get update
 apt-get -y --force-yes install apt-transport-https software-properties-common clusterhq-flocker-cli clusterhq-flocker-node 
 
+# configure flocker
 mkdir /etc/flocker
 chmod 0700 /etc/flocker
 
